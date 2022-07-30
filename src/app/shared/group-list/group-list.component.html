@@ -1,0 +1,23 @@
+<div class="aside__groups">
+    <div class="group__item" [title]="item.name" *ngFor="let item of mainData">
+        <span>
+
+            {{item.name}}
+        </span>
+        <div class="icons__side">
+            <i (click)="editItem(item)" [title]="'edit'" class='fas fa-edit'></i>
+            <i (click)="deleteItem(item)" [title]="'delete'" class='fas fa-trash-alt'></i>
+        </div>
+    </div>
+    <div (click)="chooseToAdd()" class="d-flex align-items-center pointer m-t">
+        <i class='fas fa-plus-circle m-r m-l'></i>
+        add new group
+    </div>
+    <form [formGroup]="formGroup" class="m-t" *ngIf="showForm">
+        <input type="hidden" formControlName="id" name="" id="">
+        <div class="d-flex m-b">
+            <input class="form__input m-t" placeholder="type here" type="text" formControlName="name">
+        </div>
+        <button class="form__button m-t" (click)="onSubmit(formGroup)">click</button>
+    </form>
+</div>

@@ -1,0 +1,93 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "role-list": [
+    {
+      "id": 0,
+      "name": "test2",
+      "selected": false
+    },
+    {
+      "id": 1,
+      "name": "test3",
+      "selected": true
+    }
+  ],
+  "list": [
+    {
+      "id": 0,
+      "name": "admin"
+    },
+    {
+      "id": 1,
+      "name": "sometext"
+    },
+    {
+      "id": 3,
+      "name": "sometext-2"
+    },
+    {
+      "id": 4,
+      "name": "admin"
+    },
+    {
+      "id": 5,
+      "name": "role-1"
+    },
+    {
+      "id": 6,
+      "name": "role-2"
+    },
+    {
+      "id": 7,
+      "name": "admin"
+    },
+    {
+      "id": 1,
+      "name": "sometext"
+    },
+    {
+      "id": 8,
+      "name": "sometext-2"
+    },
+    {
+      "id": 9,
+      "name": "admin"
+    },
+    {
+      "id": 10,
+      "name": "role-1"
+    },
+    {
+      "id": 11,
+      "name": "role-2"
+    },
+    {
+      "id": 12,
+      "name": "admin"
+    },
+    {
+      "id": 13,
+      "name": "sometext"
+    },
+    {
+      "name": "admin",
+      "id": 15
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

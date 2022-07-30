@@ -1,1 +1,93 @@
+$bg-color: #f1f1f1;
+$border: rgb(46, 55, 134);
 /* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+}
+.pointer {
+    cursor: pointer;
+}
+.d-flex {
+    display: flex;
+}
+.align-items-center {
+    align-items: center;
+}
+.m-r {
+    margin-right: 5px;
+}
+.m-l {
+    margin-left: 5px;
+}
+.m-t {
+    margin-top: 5px;
+}
+.justify-center {
+    justify-content: center;
+}
+.center {
+    padding: 15px;
+}
+.aside__groups {
+    width: 200px;
+    padding: 0 10px;
+    .group__item {
+        border: 2px solid $border;
+        height: 30px;
+        margin-bottom: 5px;
+        padding: 0 5px;
+        display: flex;
+        align-items: center;
+        .icons__side {
+            display: flex;
+            margin-left: auto;
+            opacity: 0;
+            transition: 0.2s;
+            i {
+                margin-left: 3px;
+                cursor: pointer;
+            }
+        }
+        &:hover {
+            .icons__side {
+                opacity: 1;
+            }
+        }
+    }
+}
+.main__content {
+    background-color: $bg-color;
+    min-height: 100vh;
+}
+.form__button {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    height: 34px;
+    background: #b9b9eb;
+    border: 1px solid transparent;
+    transition: 0.2s;
+    &:hover {
+        border: 1px solid gray;
+        background-color: #b0b0ed;
+    }
+}
+.form__input {
+    height: 25px;
+    width: 100%;
+    border-radius: 6px;
+    padding-left: 5px;
+    transition: 0.2s;
+    &:focus {
+        box-shadow: 0px 0px 0px 4px rgb(92 78 189 / 24%);
+    }
+}
+.content {
+    padding: 0 20px;
+}
+.roles {
+    .roles__item {
+        margin-bottom: 10x;
+        border-bottom: 2px solid;
+    }
+}
