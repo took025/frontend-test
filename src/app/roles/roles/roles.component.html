@@ -1,1 +1,52 @@
-<p>roles works!</p>
+<section class="d-flex">
+    <app-group-list></app-group-list>
+    <div class="content">
+        <div class="content__head">
+            <div class="search__section">
+                <input class="form__input" (input)="valueChange($event)" placeholder="search item" type="text">
+            </div>
+            <div class="filter__section form__button">
+                <div class="d-flex">
+                    filter data
+                    <i style="margin-left: auto" class='fas fa-angle-down'></i>
+                </div>
+                <div class="dropdown">
+                    <div class="filters" (click)="getData(1)">
+                        show all
+                    </div>
+                    <div class="filters" (click)="showMarked()">
+                        mshow marked
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="roles">
+            <ng-container *ngIf="mainData?.length ; else emptyData">
+                <div class="roles__item" *ngFor="let item of mainData">
+                    <input [checked]="item.selected" type="checkbox" disabled>
+                    {{item.name}}
+                    <i style="margin-left: auto;" (click)="editItem(item)" [title]="'edit'" class='fas fa-edit'></i>
+                    <i (click)="deleteItem(item)" [title]="'delete'" class='fas fa-trash-alt m-l'></i>
+
+                </div>
+
+            </ng-container>
+            <ng-template #emptyData>
+                <i class='fas fa-praying-hands'>data is empty</i>
+            </ng-template>
+
+            <form [formGroup]="formGroup" class="addRole__form">
+                <div class="d-flex m-t align-items-center">
+                    <input formControlName="selected" type="checkbox">
+                    <input [disabled]="true" #nameInput formControlName="name" placeholder="type here"
+                        class="form__input m-l" type="text">
+                </div>
+                <button [disabled]="!formGroup.controls['name'].value" (click)="submitForm(formGroup)"
+                    class="form__button m-t">{{isSelectedItem ? 'edit role' :'add role' }}</button>
+            </form>
+        </div>
+        <!-- <div class="pagination" *ngIf="paginateArray.length > 1">
+            <div class="item" (click)="getData(item)" *ngFor="let item of paginateArray">{{item}}</div>
+        </div> -->
+    </div>
+</section>
