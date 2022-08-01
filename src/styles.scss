@@ -1,6 +1,9 @@
 $bg-color: #f1f1f1;
 $border: rgb(46, 55, 134);
+$basepx: 10px;
+$white: #fff;
 /* You can add global styles to this file, and also import other style files */
+// base clases
 body {
     margin: 0;
 }
@@ -14,30 +17,52 @@ body {
     align-items: center;
 }
 .m-r {
-    margin-right: 5px;
+    margin-right: $basepx;
 }
 .m-l {
-    margin-left: 5px;
+    margin-left: $basepx;
 }
 .m-t {
-    margin-top: 5px;
+    margin-top: $basepx;
+}
+.m-r2 {
+    margin-right: $basepx;
+}
+.m-l2 {
+    margin-left: $basepx;
+}
+.m-t2 {
+    margin-top: $basepx;
 }
 .justify-center {
     justify-content: center;
 }
 .center {
-    padding: 15px;
+    max-width: 1400px;
+    margin: 0 auto;
+    // padding-top: 30px;
+    width: 100%;
 }
+// base clases
 .aside__groups {
-    width: 200px;
-    padding: 0 10px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 240px;
+    padding: $basepx;
+    background-color: $white;
+    min-height: calc(100vh - 200px);
+    margin-top: $basepx;
     .group__item {
-        border: 2px solid $border;
-        height: 30px;
-        margin-bottom: 5px;
-        padding: 0 5px;
+        height: 35px;
+        position: relative;
+        padding: 0 $basepx;
+        color: #4f4f4f;
+        text-decoration: none;
+        background-color: #fff;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
         display: flex;
         align-items: center;
+        margin-bottom: 5px;
+        cursor: pointer;
         .icons__side {
             display: flex;
             margin-left: auto;
@@ -48,46 +73,210 @@ body {
                 cursor: pointer;
             }
         }
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            border-bottom: 2px solid #166aea;
+            width: 100%;
+            left: 50%;
+            max-width: 0px;
+            transition: 0.3s;
+        }
         &:hover {
+            border-color: transparent;
             .icons__side {
                 opacity: 1;
+            }
+            &::after {
+                max-width: 100%;
+                left: 0;
             }
         }
     }
 }
+.content__head {
+    display: flex;
+    align-items: flex-end;
+    .search__section {
+        width: 100%;
+        padding-right: $basepx;
+    }
+}
 .main__content {
     background-color: $bg-color;
-    min-height: 100vh;
+    min-height: calc(100vh - 80px);
+    padding-top: 80px;
 }
 .form__button {
+    &:not(.filter__section) {
+        height: 40px;
+    }
     width: 100%;
     display: block;
-    cursor: pointer;
-    height: 34px;
-    background: #b9b9eb;
-    border: 1px solid transparent;
+    border: 1px solid #166aea;
+    color: #166aea;
     transition: 0.2s;
-    &:hover {
-        border: 1px solid gray;
-        background-color: #b0b0ed;
+    &:hover:not(:disabled) {
+        cursor: pointer;
+        background: #166aea;
+        color: #fff;
     }
 }
 .form__input {
-    height: 25px;
     width: 100%;
+    height: 40px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
     border-radius: 6px;
-    padding-left: 5px;
+    padding-left: $basepx;
     transition: 0.2s;
+    outline: none;
     &:focus {
         box-shadow: 0px 0px 0px 4px rgb(92 78 189 / 24%);
+        border: 1px solid #ccc;
     }
 }
 .content {
     padding: 0 20px;
+    width: 100%;
+    position: relative;
 }
 .roles {
+    margin-top: $basepx;
     .roles__item {
-        margin-bottom: 10x;
-        border-bottom: 2px solid;
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: -1px;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        &:first-child {
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+        }
+        &:last-child {
+            margin-bottom: 0;
+            border-bottom-right-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+        }
+    }
+}
+input[type="checkbox"] {
+    width: 20px;
+    height: 18px;
+    &:not(:disabled) {
+        cursor: pointer;
+    }
+}
+i {
+    cursor: pointer;
+}
+.pagination {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    .item {
+        display: block;
+        padding: 0.5rem 0.75rem;
+        margin-left: -1px;
+        line-height: 1.25;
+        color: #007bff;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        transition: 0.2s;
+        cursor: pointer;
+        margin: 0 2px;
+        &:hover {
+            color: #0056b3;
+            text-decoration: none;
+            background-color: #e9ecef;
+            border-color: #dee2e6;
+        }
+    }
+}
+.addRole__form {
+    margin-top: 30px;
+    .form__button {
+        margin-top: 15px;
+    }
+}
+.header {
+    box-shadow: 0 8px 14px 0 rgb(0 0 0 / 4%);
+    height: 60px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    padding: $basepx 0;
+    z-index: 100;
+    .navigation {
+        display: flex;
+        justify-content: end;
+        padding-right: $basepx;
+    }
+}
+.filter__section {
+    position: relative;
+    width: 150px;
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-top: $basepx;
+    cursor: pointer;
+    transition: 0.2s;
+    .dropdown {
+        opacity: 0;
+        transition: inherit;
+        max-height: 0;
+        background-color: #c8dae7;
+        border: inherit;
+        border-radius: inherit;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 100%;
+        padding: 10px 0;
+        pointer-events: none;
+        .filters {
+            padding: 5px;
+            color: inherit;
+            transition: inherit;
+            &:hover {
+                background-color: #dfcaca;
+                color: black;
+            }
+        }
+    }
+    &:hover {
+        border-color: #b9b9eb;
+        .dropdown {
+            opacity: 1;
+            pointer-events: initial;
+            max-height: 300px;
+        }
+    }
+}
+.nav__items {
+    color: #1967d2;
+    font-size: 21px;
+    margin-left: 16px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 $basepx;
+    transition: 0.2s;
+    &:hover {
+        background-color: rgb(238 241 245);
+    }
+    &.active {
+        background-color: rgb(238 241 245);
     }
 }

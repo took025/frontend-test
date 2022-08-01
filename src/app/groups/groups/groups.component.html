@@ -3,9 +3,19 @@
     <app-group-list></app-group-list>
     <div class="content">
         <div class="roles">
-            <div class="roles__item" *ngFor="let item of secondData">
-                {{item.name}}
-            </div>
+            <ng-container *ngIf="secondData?.length; else emptyTemplate">
+                <div class="roles__item" *ngFor="let item of secondData">
+                    <input disabled [checked]="item.selected" type="checkbox">
+                    {{item.name}}
+                </div>
+            </ng-container>
+        </div>
+        <ng-template #emptyTemplate>
+            this data is empty, try to add role 
+            <button routerLink="/roles" class="form__button m-t">go to roles</button>
+        </ng-template>
+        <div class="pagination" *ngIf="paginateArray.length > 1">
+            <div class="item" (click)="paginate(item)" *ngFor="let item of paginateArray">{{item}}</div>
         </div>
     </div>
 </div>

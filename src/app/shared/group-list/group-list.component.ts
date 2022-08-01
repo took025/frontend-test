@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { admin } from 'src/app/core/interface';
 import { mainService } from 'src/app/core/services/main-service';
@@ -12,7 +12,8 @@ export class GroupListComponent implements OnInit {
   formGroup: FormGroup;
   mainData: admin[];
   showForm = false;
-  selectedItem: any;
+  selectedItem: admin;
+  isSelectedItem: Boolean;
   constructor(private fb: FormBuilder,
     private service: mainService,
   ) { }
@@ -37,27 +38,29 @@ export class GroupListComponent implements OnInit {
   }
   onSubmit(form: FormGroup) {
     let data = form.getRawValue();
-    if (this.selectedItem) {
+    if (this.isSelectedItem) {
       this.service.EditData(this.selectedItem.id, this.formGroup.getRawValue()).subscribe((res) => {
         this.getData();
         this.formGroup.reset();
-        this.chooseToAdd();
+        this.showForm = false;
+        this.isSelectedItem = false;
       })
     } else {
       this.service.postData(data).subscribe((res: any) => {
         this.getData();
         this.formGroup.reset();
-        this.chooseToAdd();
+        this.showForm = false;
       })
     }
   }
   chooseToAdd() {
-    this.showForm = !this.showForm;
+    this.showForm = true;
   }
   editItem(item: admin) {
-    this.chooseToAdd();
+    this.showForm = true;
     this.formGroup.setValue(item);
     this.selectedItem = item;
+    this.isSelectedItem = true;
   }
 
 }

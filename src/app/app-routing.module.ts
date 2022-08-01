@@ -4,15 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home-page',
+    redirectTo: 'groups',
     pathMatch: 'full',
 },
 {
-    path: 'home-page',
+    path: 'groups',
     loadChildren: () => import('./groups/groups.module').then(m => m.GroupsModule),
 },
 {
-    path: 'admin',
+    path: 'roles',
     loadChildren: () => import('./roles/roles.module').then(m => m.RolesModule),
 },
 ];

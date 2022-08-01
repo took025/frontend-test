@@ -14,10 +14,11 @@
         add new group
     </div>
     <form [formGroup]="formGroup" class="m-t" *ngIf="showForm">
-        <input type="hidden" formControlName="id" name="" id="">
+        <input type="hidden" formControlName="id">
         <div class="d-flex m-b">
-            <input class="form__input m-t" placeholder="type here" type="text" formControlName="name">
+            <input class="form__input m-t" #nameInput placeholder="type here" type="text" formControlName="name">
         </div>
-        <button class="form__button m-t" (click)="onSubmit(formGroup)">click</button>
+        <button [disabled]="!formGroup.controls['name'].value" class="form__button m-t"
+            (click)="onSubmit(formGroup)">{{isSelectedItem ? 'edit group' :'add group' }}</button>
     </form>
 </div>
