@@ -1,8 +1,8 @@
 # FrontendTest
+first of all run npm install to instal node modules,
 
-first Run `json-server --watch db.json` for a dev server.
+next run ng serve to execute project,
 
+and then `json-server --watch db.json` for a dev server.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+after all of them you can see da result
