@@ -1,7 +1,14 @@
 <header class="header">
     <nav class="navigation center">
-        <a class="nav__items" routerLinkActive="active" routerLink="groups">groups</a>
-        <a class="nav__items m-r" routerLinkActive="active" routerLink="roles">roles</a>
+        <div class="toggle" [ngClass]="{'active': clicked}" (click)="onClickMenu($event)">
+            <span class="rows"></span>
+            <span class="rows"></span>
+            <span class="rows"></span>
+        </div>
+        <div class="d-flex align-items-center">
+            <a class="nav__items" routerLinkActive="active" routerLink="groups">groups</a>
+            <a class="nav__items m-r" routerLinkActive="active" routerLink="roles">roles</a>
+        </div>
     </nav>
 </header>
 <div class="main__content">
